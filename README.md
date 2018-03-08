@@ -36,6 +36,15 @@ Buchstaben wie e und n durch ihre deutliche Präsenz zu idetifizieren.
 
 ## 2.1 Alphabetisch Einordnen
 
+## ROT13-Verfahren
+
+Die ROT13-Chiffre funktioniert genauso, wie die Caesar-Verschlüsselung, nur das der Schlüssel b = 13 ist. 
+
+Empfänger muss genaues Alphabet kennen
+nicht unbedingt für jede Sprache anwendbar wegen fehlender Zeichen
+
+eigene Probleme: 'ß' einbinden
+
 ### 3. RSA-Verschlüsselung<a name="RSA"></a>
 
 Das von Rivest, Shamir und Adelson 1980 patentierte Verschlüsselungsverfahren ist heute das
