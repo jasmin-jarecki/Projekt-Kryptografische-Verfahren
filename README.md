@@ -3,13 +3,17 @@
 #### **Inhaltsverzeichnis**
 [1. Einleitung](#Einl)
 
-[2. Caesar-Verschlüsselung](#Cae)
+[2. Aufgaben](#Auf)
 
-[3. RSA-Verschlüsselung](#RSA)
+[2.1 Alphabetisch Einordnen](#Alph)
 
-[4. ...](#...)
+[2.2 Caesar-Verschlüsselung](#Cae)
 
-[5. Zusammenfasssung](#Zusam)
+[2.3. RSA-Verschlüsselung](#RSA)
+
+[3. ...](#...)
+
+[4. Zusammenfasssung](#Zusam)
 
 ### Einleitung<a name="Einl"></a>
 
@@ -17,7 +21,43 @@ Das Projekt befasst sich mit einfachen Kryptographischen Verfahren zur Ver- und 
 Des Weiteren soll gezeigt werden, wie diese in Python-Programme umgesetzt werden können. Dafür werden für ausgewählte Methoden Programme zur Ver- und Entschlüsselung von Texten geschrieben und der Verlauf in diesem Bericht dokumentiert. Die Programme werden zusätzlich hier verlinkt und als Python-Dateien im Repository zu finden sein. 
 
 
-### 2. Caesar-Verschlüsselung<a name="Cae"></a>
+### 2. Aufgaben<a name="Auf"></a>
+
+#### 2.1 Alphabetisch Einordnen<a name="Aph"></a>
+
+s. Python-Skript "Alphabetisch Einordnen"
+
+Die Verschlüsselung eines Textes, indem die Buchstaben des Eingabetextes in alphabetische Reihenfolge gebracht werden, ist
+in Python ein relativ einfach zu programmierendes Verfahren. Der eingegebene Text wird so sortiert, dass zunächst die 
+Großbuchstaben in alphabetische Reihenfolge gebracht werden und anschließend die Kleinbuchstaben, dabei werden die
+ursprünglichen Wortlängen beibehalten.<br />
+
+In Python kann diese Verschlüsselungsmethode wiefolgt umgesetzt werden. Zunächst wird eine Liste mit den Elementen des
+Alphabets als Groß- und Kleinbuchstaben definiert.<br>
+
+[Bild 1] <br />
+
+Anschließend wird die Verschlüsselungsfunktion definiert mit den Argumenten 'Text', an dessen Stelle der zu verschlüs-
+selnde Text geschrieben wird, und 'Alphabet', wo das zu nutzende Alphabet eingetragen wird.
+Die Funktion beginnt damit, dass der als string eingegebene Text zu einer Liste K gemacht wird, in der die einzelnen 
+Elemente aus den Buchstaben, Leer- und Satzzeichen bestehen.<br>
+Im Anschluss wird eine zweite Liste K2 erstellt, die nur noch die Buchstaben enthält.
+Diese Liste wird im Folgenden dann, wie oben beschrieben, sortiert. Im letzten Schritt sollen die Leer- und Satzzeichen in
+die verschlüsselte Nachricht in einer dritten Liste K3 eingefügt werden. Dies gelingt, indem die Elemente der ersten Liste
+K betrachtet werden. Sind diese auch Elemente des definierten Alphabets, werden sie durch die entsprechenden Elemente aus
+der sortierten Liste K2 ersetzt, ist es aber ein Leer- oder Satzzeichen, so werden diese direkt übernommen.<br> 
+Diese Liste wird letztlich von der Verschlüsselungsfunktion aus string ausgegeben.<br />
+
+In Python3 ist es durch die list.sort() Methode sehr leicht ein Programm für eine Verschlüsselung zu schreiben. Eine
+Entschlüsselung hingegen ist nicht so einfach und je länger die verschlüssele Botschaft wird, desto schwieriger wird es 
+auch diese zu entschlüsseln. <br>
+Da es wenige Anhaltspunkte gibt, nämlich Wortlängen, Anzahl der Großbuchstaben und gegebenenfalls auf bestimmte Sprachen
+hindeutende Zeichen, macht es eine Entschlüsselung schwer. Dafür müsste man jede mögliche Kombination der einzelnen 
+Buchstaben ausprobieren und prüfen, welche Sinn ergeben. In manchen Fällen ist es zudem möglich, dass mehrere Kombina-
+tionen sinnvoll sind.
+
+
+### 2.2 Caesar-Verschlüsselung<a name="Cae"></a>
 
 Die Caesar-Chiffre funktioniert, indem jedem Buchstaben a mithilfe eines geheimen Schlüssels d ein
 anderer Buchstabe b zugeordnet wird.
@@ -34,7 +74,6 @@ zum Ver- und Entschlüsseln denselben Schlüssel benötigt. Des Weiteren variier
 vorkommenden Buchstaben bei typischem Sprachgebrauch je nach Sprache. So sind im Deutschen
 Buchstaben wie e und n durch ihre deutliche Präsenz zu idetifizieren.
 
-## 2.1 Alphabetisch Einordnen
 
 ## ROT13-Verfahren
 
