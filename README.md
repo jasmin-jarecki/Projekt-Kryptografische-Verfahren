@@ -9,9 +9,13 @@
 
 [2.2 Caesar-Verschlüsselung](#Cae)
 
-[2.3. RSA-Verschlüsselung](#RSA)
+[2.3 ROT13-Verfahren](#ROT)
 
-[3. ...](#...)
+[2.4 Hill-Verfahren](#Hill)
+
+[2.5 RSA-Verschlüsselung](#RSA)
+
+[3. Projektverlauf](#PrV)
 
 [4. Zusammenfasssung](#Zusam)
 
@@ -57,9 +61,9 @@ Buchstaben ausprobieren und prüfen, welche Sinn ergeben. In manchen Fällen ist
 tionen sinnvoll sind.
 
 
-### 2.2 Caesar-Verschlüsselung<a name="Cae"></a>
+#### 2.2 Caesar-Verschlüsselung<a name="Cae"></a>
 
-Die Caesar-Chiffre funktioniert, indem jedem Buchstaben a mithilfe eines geheimen Schlüssels d ein
+Die Caesar-Chiffre funktioniert, indem jedem Buchstaben a mithilfe eines geheimen Schlüssels c ein
 anderer Buchstabe b zugeordnet wird.
 b = a+c mod 26.
 Diese Art der Verschlüsselung wurde bereits von dem römischen Feldherr Julius Caesar verwendet,
@@ -75,16 +79,32 @@ vorkommenden Buchstaben bei typischem Sprachgebrauch je nach Sprache. So sind im
 Buchstaben wie e und n durch ihre deutliche Präsenz zu idetifizieren.
 
 
-## ROT13-Verfahren
+#### ROT13-Verfahren<a name="ROT"></a>
 
-Die ROT13-Chiffre funktioniert genauso, wie die Caesar-Verschlüsselung, nur das der Schlüssel b = 13 ist. 
+Die ROT13-Chiffre ist eine Caesar-Verschlüsselung mit dem Schlüssel c = 13. Dieser kann aber frei gewählt werden. Betrachtet man allerdings nur das gewöhnliche Alphabet mit den 26 Buchstaben, ist eine Nachricht relativ leicht zu dechiffrieren, da man die Zeichen nur entsprechend verschoben werden müssen. Da das Alphabet nur 26 Buchstaben müsste man höchstens 25 Verschiebungen ausprobieren.
+<br />
+Auch dieses Verfahren ist relativ einfach umzusetzten.<br>
+Zunächst wird wieder ein Alphabet definiert. Ein String, der alle Elemente enthalten soll, die in der Eingabenachricht vorkommen können. So schließt er sowohl Klein- als auch Großbuchstaben, Zahlen, Leer- und Satzzeichen ein. Dies hat im Folgenden die Auswirkung, dass die Summe aus dem Buchstaben a und dem Schlüssel c module der Anzahl der Elemente des Alphabets n genommen wird.<br>
+Die Verschlüsselungsfunktion enthält die Argumente 'Text', für den zu verschlüsselnden Text, 'Alphabet', wo das zu nutzende Alphabet eingetragen werden soll, und 'Shift=13', wobei dieser Schlüssel frei gewählt werden kann.<br>
+In dieser Funktion wird ein Dictionairy angelegt, sodass jedem Buchstaben aus dem Alphabet ein neuer um Shift=13 Stellen veschobener Buchstabe zugeordnet wird. Nun wird jeder Buchstabe der Eingabe mithilfe des Dictionairys ersetzt, zu einer neuen Liste hinzugefügt, die letztlich als String wieder ausgegeben wird.<br/>
+Dadurch, dass das Alphabet eigens definiert werden muss, ist es nicht mehr so leicht ohne Kenntniss des Schlüssels den verschlüsselten Text zu dechiffrieren. Für die Entschlüsselung muss man sowohl die Länge des Alphabets als auch die Reihenfolge der Zeichen kennen.<br />
+Somit funktioniert die Entschlüsselung entsprechend, der ursprüngliche Buchstabe a ergibt sich durch: a = b-c mod n.
 
-Empfänger muss genaues Alphabet kennen
-nicht unbedingt für jede Sprache anwendbar wegen fehlender Zeichen
 
 eigene Probleme: 'ß' einbinden
 
-### 3. RSA-Verschlüsselung<a name="RSA"></a>
+#### Hill-Verfahren<a name="Hill"></a>
+
+Das Hill-Verfahren wurde 1929 von dem New Yorker Professor Lester Hill entdeckt, es basiert auf der Substitution der Buchstaben des Alphabets.<br />
+Die Verschlüsselung funktioniert wie folgt:<br>
+n Zeichen werden mithilfe einer nxn-Matrix multipliziert. Damit die Nachricht auch wieder zu entschlüsseln ist, muss die nxn Matrix invertierbar sein. Anschließend wird vom Produkt modulo 26 errechnet. Um eine Nachricht zu verschlüsseln, lassen sich z.B. die Buchstaben zu Dreierkonstellationen zusammenfassen. Die nun in Zahlen umgewandelt werden müssen. Dies kann z.B. ähnlich zustande kommen wie beim Rot-Verfahren. Die 3x3-Matrix, um nun die drei Buchstaben zu verschlüsseln ist der Schlüssel.<br />
+Die Entschlüsselung funktioniert wie folgt:
+Zum Entschlüsseln wird nun die verschlüsselte Matrix mit der inversen Matrix multipliziert, anschließend ist wieder die Operation modulo 26 durchzuführen.<br>
+Die Anforderungen an den Schlüssel sind wie folgt:
+Die Matrix muss invertierbar sein, d.h. die Determinante muss ungleich 0 sein. Auch darf die Matrix, damit sie im Hill-Verfahren angewendet werden kann, nicht einen gemeinsamen Teiler mit den Primfaktoren der modularen Zahl haben, bei 26 wären das 2 und 13.
+
+
+#### 3. RSA-Verschlüsselung<a name="RSA"></a>
 
 Das von Rivest, Shamir und Adelson 1980 patentierte Verschlüsselungsverfahren ist heute das
 weitgenutzte Verfahren der Verschlüsselung, es findet Anwendung in der Internet- und
