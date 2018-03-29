@@ -1,23 +1,19 @@
 # Projekt-Kryptografische-Verfahren
 
 #### **Inhaltsverzeichnis**
-[1. Einleitung](#Einl)
-
-[2. Aufgaben](#Auf)
-
-[2.1 Alphabetisch Einordnen](#Alph)
-
-[2.2 Caesar-Verschlüsselung](#Cae)
-
-[2.3 ROT13-Verfahren](#ROT)
-
-[2.4 Hill-Verfahren](#Hill)
-
-[2.5 RSA-Verschlüsselung](#RSA)
-
-[3. Projektverlauf](#PrV)
-
-[4. Zusammenfasssung](#Zusam)
+<ol>
+  <li>[1. Einleitung](#Einl)</li>
+  <li>[2. Aufgaben](#Auf)</li>
+  <ol>
+    <li>[2.1 Alphabetisch Einordnen](#Alph)</li>
+    <li>[2.2 Caesar-Verschlüsselung](#Cae)</li>
+    <li>[2.3 ROT13-Verfahren](#ROT)</li>
+    <li>[2.4 Hill-Verfahren](#Hill)</li>
+    <li>[2.5 RSA-Verschlüsselung](#RSA)</li>
+  </ol>
+  <li>[3. Projektverlauf](#PrV)</li>
+  <li>[4. Zusammenfasssung](#Zusam)</li>
+ </ol>
 
 ### Einleitung<a name="Einl"></a>
 
@@ -64,12 +60,12 @@ tionen sinnvoll sind.
 #### 2.2 Caesar-Verschlüsselung<a name="Cae"></a>
 
 Die Caesar-Chiffre funktioniert, indem jedem Buchstaben a mithilfe eines geheimen Schlüssels c ein
-anderer Buchstabe b zugeordnet wird.
-b = a+c mod 26.
+anderer Buchstabe b zugeordnet wird.<br />
+b = a+c mod 26.<br />
 Diese Art der Verschlüsselung wurde bereits von dem römischen Feldherr Julius Caesar verwendet,
 und trägt deshalb seinen Namen.
 Bei der Caesar-Verschlüsselung ergeben sich jedoch einige Nachteile, die im Folgenden weiter
-betrachtet werden sollen.
+betrachtet werden sollen.<br>
 Da das Alphabet nur 26 Buchstaben besitzt, gibt es nur 25 verschiedene Schlüssel, um einen Text zu
 ver- bzw. entschlüsseln.
 Selbst wenn man jedem Buchstaben einen beliebigen anderen zuordnen würde, ergäben sich zwar
@@ -99,16 +95,20 @@ Das Hill-Verfahren wurde 1929 von dem New Yorker Professor Lester Hill entdeckt,
 Die Verschlüsselung funktioniert wie folgt:<br>
 n Zeichen werden mithilfe einer nxn-Matrix multipliziert. Damit die Nachricht auch wieder zu entschlüsseln ist, muss die nxn Matrix invertierbar sein. Anschließend wird vom Produkt modulo 26 errechnet. Um eine Nachricht zu verschlüsseln, lassen sich z.B. die Buchstaben zu Dreierkonstellationen zusammenfassen. Die nun in Zahlen umgewandelt werden müssen. Dies kann z.B. ähnlich zustande kommen wie beim Rot-Verfahren. Die 3x3-Matrix, um nun die drei Buchstaben zu verschlüsseln ist der Schlüssel.<br />
 Die Entschlüsselung funktioniert wie folgt:
-Zum Entschlüsseln wird nun die verschlüsselte Matrix mit der inversen Matrix multipliziert, anschließend ist wieder die Operation modulo 26 durchzuführen.<br>
+Zum Entschlüsseln, wie es in Aufgabe 2 gefordert wird, wird nun die verschlüsselte Matrix mit der inversen Matrix multipliziert, anschließend ist wieder die Operation modulo 26 durchzuführen.<br>
 Die Anforderungen an den Schlüssel sind wie folgt:
-Die Matrix muss invertierbar sein, d.h. die Determinante muss ungleich 0 sein. Auch darf die Matrix, damit sie im Hill-Verfahren angewendet werden kann, nicht einen gemeinsamen Teiler mit den Primfaktoren der modularen Zahl haben, bei 26 wären das 2 und 13.
+Die Matrix muss invertierbar sein, d.h. die Determinante muss ungleich 0 sein. Auch darf die Matrix, damit sie im Hill-Verfahren angewendet werden kann, nicht einen gemeinsamen Teiler mit den Primfaktoren der modularen Zahl haben, bei 26 wären das 2 und 13.<br />
+
+Das Hill-Verfahren wird als Definition Verschlüsselung2 in dem Programm umgesetzt. Die Definition ist charakterisiert durch die Eingabe, das verwendete Alphabet, sowie die Schlüsselmatrix M. Es wird auf  die Bibliothek Numpy zurückgegriffen. Anfangs wird das Alphabet in einer Liste notiert, um anschließend mithilfe einer for-Schleife, die Stellen im Alphabet des eingetragenen Ausdruckes als weitere Liste ausgeben zu können. Hiernach wird diese Liste L in einen Vektor v umgewandelt. Dieser muss allerdings, um anschließend mit der Matrix multipliziert zu werden, transponiert werden. <br> Nun gilt es, den Vektor in mehrere 3x1-Vektoren umzuwandeln. Das Programm schafft es leider nicht, Ausdrücke mit nicht durch drei teilbarer Buchstabenanzahl zu codieren. [Bild] In dieser while-Schleife werden die Elemente der Indizes i, i+1, und i+2 des transponierten Vektors v zu einem Vektor v1 gemacht, und dann mit der Schlüsselmatrix M multipliziert. Es folgt die Ausgabe des Produktes. Durch die Erhöhung von i um drei zum Ende der Schleife bewirkt, dass die nächsten drei Zahlen den selben Vorgang durchlaufen. Die while-Schleife stoppt, wenn i gleich oder größer der Länge von v ist. Somit liefert das Programm in der Ausgabe schließlich die verschlüsselten 3x1-Vektoren.<br />
+
+Die Entschlüsselung des Hill-Verfahrens, Aufgabe 2, wird analog umgesetzt. Zuvor muss jedoch noch die inverse Matrix berechnet werden. Die Definition ist in Abhängigkeit der verschlüsselten Vektoren, der Schlüsselmatrix M und des Alphabets. Das Alphabet kann wie bereits beim Verschlüsselungsvorgang beschrieben als Liste fungieren, sodass die Indizes dann ausreichen, um die entschlüsselten Zahlen wieder zu Buchstaben werden zu lassen. Die Schwierigkeit in diesem Verfahren der Entschlüsselung, die inverse Matrix von M zu bilden, lässt sich mittels 1/det /* adj(M)(die adjunkte Matrix von M) berechnen. <br>
 
 
 #### 3. RSA-Verschlüsselung<a name="RSA"></a>
 
 Das von Rivest, Shamir und Adelson 1980 patentierte Verschlüsselungsverfahren ist heute das
 weitgenutzte Verfahren der Verschlüsselung, es findet Anwendung in der Internet- und
-Telefoninfrastruktur, sowie der E-Mail Verschlüsselung und vielem mehr.
+Telefoninfrastruktur, sowie der E-Mail Verschlüsselung und vielem mehr.<br>
 Bei dem RSA-Verschlüsselungsverfahren handelt es sich um ein asymmetrisches
 Verschlüsselugsverfahren. Bei diesem Verfahren wird ein Klartext m mit dem public key des
 Empfängers verschlüsselt, der Empfänger kann den Geheimtext c anschließend mit dem private key d
@@ -117,17 +117,17 @@ lösen.
 c wird wie folgt berechnet
 c = m^e mod n,
 wobei gilt
-n = p q.
+n = p /* q.
 Für die beiden Primzahlen p und q gilt, dass deren Entschlüsselung mithilfe von n durch Faktorisieren
 zu rechenaufwendig ist, n groß genug ist. Hierbei geht es heutzutage um Größenordnungen von
 mehreren hundert bit.
 Für e gilt
 ggt(e,phi(n)) = 1,
-wobei phi(n) = (p-1) (q-1).
+wobei phi(n) = (p-1) /* (q-1).
 Phi(n) gibt die Anzahl der Teilerfremden Zahlen von n, die kleiner als n sind, an.
 Zum Entschlüsseln wird der private Schlüssel d benötigt
-d*e mod phi(n) = 1, d.h.
-d*e = k mod phi(n)+1,
+d /* e mod phi(n) = 1, d.h.
+d /* e = k mod phi(n)+1,
 wobei k Element der natürlichen Zahlen ist.
 Nach dem Satz von Euler folgt daraus
 m^k^phi(n) m mod n = m.
@@ -137,5 +137,9 @@ c^d mod n = m^d m^-d mod n
 = m.
 Um den Geheimtext c als Dritter zu bestimmen, muss man entweder d aus e oder Phi bestimmen.
 Dies ist alles recht ähnlich in der rechnerischen, praktischen Durchführbarkeit der Bestimmung von p
-und q aus n. Ebenfalls die e-te Wurzel aus c zu berechnen scheitert am Rechenaufwand.
+und q aus n. Ebenfalls die e-te Wurzel aus c zu berechnen scheitert am Rechenaufwand.<br />
+
+In Python ist die grundsätzliche Ver- und Entschlüsselung nach RSA-Verfahren nicht schwer umzusetzten, da die Formeln für den Geheimtext c und den Klartext m direkt eingegeben werden können, die Voraussetzung dafür ist, dass die beiden Schlüssel bekannt sein müssen.<br>
+Die eigentliche Schwierigkeit liegt darin, die Schlüssel zu erzeugen.<br>
+Für den Schlüssel e werden alle Zahlen i von z bis phi(n) auf den größten gemeinsamen Teiler von i und phi(n) überprüft, wenn dieser 1 ist, eignet sich i als öffentlicher Schlüssel e. Das Argument z wird eingeführt, damit das Programm nicht bei den kleinen Zahlen abbrechen soll. So kann etwas Einfluss auf die Höhe des Betrags von e genommen werden. <br />
 
