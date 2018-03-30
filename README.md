@@ -2,17 +2,17 @@
 
 #### **Inhaltsverzeichnis**
 <ol>
-  [<li>Einleitung</li>](#Einl)
-  [<li>Aufgaben</li>](#Auf)
+  <li>Einleitung</li>
+  <li>Aufgaben</li>
   <ol>
-    [<li> Alphabetisch Einordnen</li>](#Alph)
-    [<li> Caesar-Verschlüsselung</li>](#Cae)
-    [<li> ROT13-Verfahren</li>](#ROT)
-    [<li> Hill-Verfahren</li>](#Hill)
-    [<li> RSA-Verschlüsselung</li>](#RSA)
+    <li> Alphabetisch Einordnen</li>
+    <li> Caesar-Verschlüsselung</li>
+    <li> ROT13-Verfahren</li>
+    <li> Hill-Verfahren</li>
+    <li> RSA-Verschlüsselung</li>
   </ol>
-  [<li>Projektverlauf</li>](#PrV)
-  [<li>Zusammenfasssung</li>](#Zusam)
+  <li>Projektverlauf</li>
+  <li>Zusammenfasssung</li>
  </ol>
 
 ### Einleitung<a name="Einl"></a>
@@ -25,7 +25,7 @@ Des Weiteren soll gezeigt werden, wie diese in Python-Programme umgesetzt werden
 
 #### 2.i Alphabetisch Einordnen<a name="Aph"></a>
 
-s. Python-Skript "Alphabetisch Einordnen"
+s. [Python-Skript "Alphabetisch Einordnen"](https://github.com/jasmin-jarecki/Projekt-Kryptografische-Verfahren/blob/master/Alphabetisch%20Einordnen.ipynb)
 
 Die Verschlüsselung eines Textes, indem die Buchstaben des Eingabetextes in alphabetische Reihenfolge gebracht werden, ist
 in Python ein relativ einfach zu programmierendes Verfahren. Der eingegebene Text wird so sortiert, dass zunächst die 
@@ -35,7 +35,7 @@ ursprünglichen Wortlängen beibehalten.<br />
 In Python kann diese Verschlüsselungsmethode wiefolgt umgesetzt werden. Zunächst wird eine Liste mit den Elementen des
 Alphabets als Groß- und Kleinbuchstaben definiert.<br>
 
-[Bild 1] <br />
+[Screenshot (1)](https://github.com/jasmin-jarecki/Projekt-Kryptografische-Verfahren/blob/master/Berichtbilder/Screenshot%20(1).png)
 
 Anschließend wird die Verschlüsselungsfunktion definiert mit den Argumenten 'Text', an dessen Stelle der zu verschlüs-
 selnde Text geschrieben wird, und 'Alphabet', wo das zu nutzende Alphabet eingetragen wird.
@@ -46,6 +46,7 @@ Diese Liste wird im Folgenden dann, wie oben beschrieben, sortiert. Im letzten S
 die verschlüsselte Nachricht in einer dritten Liste K3 eingefügt werden. Dies gelingt, indem die Elemente der ersten Liste
 K betrachtet werden. Sind diese auch Elemente des definierten Alphabets, werden sie durch die entsprechenden Elemente aus
 der sortierten Liste K2 ersetzt, ist es aber ein Leer- oder Satzzeichen, so werden diese direkt übernommen.<br> 
+
 Diese Liste wird letztlich von der Verschlüsselungsfunktion aus string ausgegeben.<br />
 
 In Python3 ist es durch die list.sort() Methode sehr leicht ein Programm für eine Verschlüsselung zu schreiben. Eine
@@ -77,6 +78,8 @@ Buchstaben wie e und n durch ihre deutliche Präsenz zu idetifizieren.
 
 #### 2.iii ROT13-Verfahren<a name="ROT"></a>
 
+s. [Python-Skript "ROT13-Verfahren"](https://github.com/jasmin-jarecki/Projekt-Kryptografische-Verfahren/blob/master/ROT13-Verfahren.ipynb)
+
 Die ROT13-Chiffre ist eine Caesar-Verschlüsselung mit dem Schlüssel c = 13. Dieser kann aber frei gewählt werden. Betrachtet man allerdings nur das gewöhnliche Alphabet mit den 26 Buchstaben, ist eine Nachricht relativ leicht zu dechiffrieren, da man die Zeichen nur entsprechend verschoben werden müssen. Da das Alphabet nur 26 Buchstaben müsste man höchstens 25 Verschiebungen ausprobieren.
 <br />
 Auch dieses Verfahren ist relativ einfach umzusetzten.<br>
@@ -89,6 +92,8 @@ Somit funktioniert die Entschlüsselung entsprechend, der ursprüngliche Buchsta
 
 #### 2.iv Hill-Verfahren<a name="Hill"></a>
 
+s. [Python-Skript "Hill-Verfahren"](https://github.com/jasmin-jarecki/Projekt-Kryptografische-Verfahren/blob/master/Hill-Verfahren.ipynb)
+
 Das Hill-Verfahren wurde 1929 von dem New Yorker Professor Lester Hill entdeckt, es basiert auf der Substitution der Buchstaben des Alphabets.<br />
 Die Verschlüsselung funktioniert wie folgt:<br>
 n Zeichen werden mithilfe einer nxn-Matrix multipliziert. Damit die Nachricht auch wieder zu entschlüsseln ist, muss die nxn Matrix invertierbar sein. Anschließend wird vom Produkt modulo 26 errechnet. Um eine Nachricht zu verschlüsseln, lassen sich z.B. die Buchstaben zu Dreierkonstellationen zusammenfassen. Die nun in Zahlen umgewandelt werden müssen. Dies kann z.B. ähnlich zustande kommen wie beim Rot-Verfahren. Die 3x3-Matrix, um nun die drei Buchstaben zu verschlüsseln ist der Schlüssel.<br />
@@ -99,10 +104,14 @@ Die Matrix muss invertierbar sein, d.h. die Determinante muss ungleich 0 sein. A
 
 Das Hill-Verfahren wird als Definition Verschlüsselung2 in dem Programm umgesetzt. Die Definition ist charakterisiert durch die Eingabe, das verwendete Alphabet, sowie die Schlüsselmatrix M. Es wird auf  die Bibliothek Numpy zurückgegriffen. Anfangs wird das Alphabet in einer Liste notiert, um anschließend mithilfe einer for-Schleife, die Stellen im Alphabet des eingetragenen Ausdruckes als weitere Liste ausgeben zu können. Hiernach wird diese Liste L in einen Vektor v umgewandelt. Dieser muss allerdings, um anschließend mit der Matrix multipliziert zu werden, transponiert werden. <br> Nun gilt es, den Vektor in mehrere 3x1-Vektoren umzuwandeln. Das Programm schafft es leider nicht, Ausdrücke mit nicht durch drei teilbarer Buchstabenanzahl zu codieren. [Bild] In dieser while-Schleife werden die Elemente der Indizes i, i+1, und i+2 des transponierten Vektors v zu einem Vektor v1 gemacht, und dann mit der Schlüsselmatrix M multipliziert. Es folgt die Ausgabe des Produktes. Durch die Erhöhung von i um drei zum Ende der Schleife bewirkt, dass die nächsten drei Zahlen den selben Vorgang durchlaufen. Die while-Schleife stoppt, wenn i gleich oder größer der Länge von v ist. Somit liefert das Programm in der Ausgabe schließlich die verschlüsselten 3x1-Vektoren.<br />
 
+s. [Python-Skript "Hill-Verfahren"](https://github.com/jasmin-jarecki/Projekt-Kryptografische-Verfahren/blob/master/A2%20Entschlüsselung%20Hill-Verfahren.ipynb)
+
 Die Entschlüsselung des Hill-Verfahrens, Aufgabe 2, wird analog umgesetzt. Zuvor muss jedoch noch die inverse Matrix berechnet werden. Die Definition ist in Abhängigkeit der verschlüsselten Vektoren, der Schlüsselmatrix M und des Alphabets. Das Alphabet kann wie bereits beim Verschlüsselungsvorgang beschrieben als Liste fungieren, sodass die Indizes dann ausreichen, um die entschlüsselten Zahlen wieder zu Buchstaben werden zu lassen. Die Schwierigkeit in diesem Verfahren der Entschlüsselung, die inverse Matrix von M zu bilden, lässt sich mittels 1/det /* adj(M)(die adjunkte Matrix von M) berechnen. <br>
 
 
 #### 2.v RSA-Verschlüsselung<a name="RSA"></a>
+
+s. [Python-Skript "RSA-Verschlüsselung"](https://github.com/jasmin-jarecki/Projekt-Kryptografische-Verfahren/blob/master/RSA-Verschlüsselung.ipynb)
 
 Das von Rivest, Shamir und Adelson 1980 patentierte Verschlüsselungsverfahren ist heute das
 weitgenutzte Verfahren der Verschlüsselung, es findet Anwendung in der Internet- und
@@ -195,3 +204,8 @@ In diesem Projekt über kryptographische Verfahren ist es uns gelungen, uns erfo
 
 ### 5. Literatur
 
+(1)
+(2)
+(3)
+(4)
+(5)
