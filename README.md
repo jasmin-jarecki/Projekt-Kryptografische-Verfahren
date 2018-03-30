@@ -155,8 +155,6 @@ und q aus n. Ebenfalls die e-te Wurzel aus c zu berechnen scheitert am Rechenauf
 
 In Python ist die grundsätzliche Ver- und Entschlüsselung nach RSA-Verfahren nicht schwer umzusetzten, da die Formeln für den Geheimtext c und den Klartext m direkt eingegeben werden können, die Voraussetzung dafür ist, dass die beiden Schlüssel bekannt sein müssen.<br>
 
-![Screenshot ](
-
 Die eigentliche Schwierigkeit liegt darin, die Schlüssel zu erzeugen.<br>
 Für den Schlüssel e werden alle Zahlen i von z bis phi(n) auf den größten gemeinsamen Teiler von i und phi(n) überprüft, wenn dieser 1 ist, eignet sich i als öffentlicher Schlüssel e. Das Argument z wird eingeführt, damit das Programm nicht bei den kleinen Zahlen abbrechen soll. So kann etwas Einfluss auf die Höhe des Betrags von e genommen werden. <br />
 
