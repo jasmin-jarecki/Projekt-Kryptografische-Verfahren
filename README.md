@@ -18,7 +18,7 @@
 ### Einleitung<a name="Einl"></a>
 
 Das Projekt befasst sich mit einfachen Kryptographischen Verfahren zur Ver- und Entschlüsselung von Daten insbesondere Texten. Die einzelnen Verfahren sollen zunächst beschrieben und erklärt werden. Wie wurden sie entwickelt, wie funktionieren sie, welche Vor- un Nachteile gibt es und welche Anwendungen finden sie?
-Des Weiteren soll gezeigt werden, wie diese in Python-Programme umgesetzt werden können. Dafür werden für ausgewählte Methoden Programme zur Ver- und Entschlüsselung von Texten geschrieben und der Verlauf in diesem Bericht dokumentiert. Die Programme werden zusätzlich hier verlinkt und als Python-Dateien im Repository zu finden sein. 
+Des Weiteren soll gezeigt werden, wie diese in Python-Programme umgesetzt werden können. Dafür werden für ausgewählte Methoden Programme zur Ver- und Entschlüsselung von Texten geschrieben und der Verlauf in diesem Bericht dokumentiert. Die Programme werden zusätzlich hier verlinkt und als Python-Dateien im Repository zu finden sein. Für unsere Programmskripte haben wir die Version 3.6.3 von Python genutzt und auf Windows gearbeitet.
 
 
 ### 2. Aufgaben<a name="Auf"></a>
@@ -78,7 +78,7 @@ s. [Python-Skript "ROT13-Verfahren"](https://github.com/jasmin-jarecki/Projekt-K
 
 Die ROT13-Chiffre ist eine Caesar-Verschlüsselung mit dem Schlüssel c = 13. Dieser kann aber frei gewählt werden. Betrachtet man allerdings nur das gewöhnliche Alphabet mit den 26 Buchstaben, ist eine Nachricht relativ leicht zu dechiffrieren, da man die Zeichen nur entsprechend verschoben werden müssen. Da das Alphabet nur 26 Buchstaben müsste man höchstens 25 Verschiebungen ausprobieren.
 <br />
-Auch dieses Verfahren ist relativ einfach umzusetzten.<br>
+Auch dieses Verfahren ist relativ einfach umzusetzen.<br>
 Zunächst wird wieder ein Alphabet definiert. Ein String, der alle Elemente enthalten soll, die in der Eingabenachricht vorkommen können. So schließt er sowohl Klein- als auch Großbuchstaben, Zahlen, Leer- und Satzzeichen ein. Dies hat im Folgenden die Auswirkung, dass die Summe aus dem Buchstaben a und dem Schlüssel c module der Anzahl der Elemente des Alphabets n genommen wird.<br>
 Die Verschlüsselungsfunktion enthält die Argumente 'Text', für den zu verschlüsselnden Text, 'Alphabet', wo das zu nutzende Alphabet eingetragen werden soll, und 'Shift=13', wobei dieser Schlüssel frei gewählt werden kann.<br>
 In dieser Funktion wird ein Dictionairy angelegt, sodass jedem Buchstaben aus dem Alphabet ein neuer um Shift=13 Stellen veschobener Buchstabe zugeordnet wird. 
@@ -104,7 +104,7 @@ Zum Entschlüsseln, wie es in Aufgabe 2 gefordert wird, wird nun die verschlüss
 Die Anforderungen an den Schlüssel sind wie folgt:
 Die Matrix muss invertierbar sein, d.h. die Determinante muss ungleich 0 sein. Auch darf die Matrix, damit sie im Hill-Verfahren angewendet werden kann, nicht einen gemeinsamen Teiler mit den Primfaktoren der modularen Zahl haben, bei 26 wären das 2 und 13.<br />
 
-Das Hill-Verfahren wird als Definition Verschlüsselung2 in dem Programm umgesetzt. Die Definition ist charakterisiert durch die Eingabe, das verwendete Alphabet, sowie die Schlüsselmatrix M. Es wird auf  die Bibliothek Numpy zurückgegriffen. Anfangs wird das Alphabet in einer Liste notiert, um anschließend mithilfe einer for-Schleife, die Stellen im Alphabet des eingetragenen Ausdruckes als weitere Liste ausgeben zu können. Hiernach wird diese Liste L in einen Vektor v umgewandelt. Dieser muss allerdings, um anschließend mit der Matrix multipliziert zu werden, transponiert werden. <br> Nun gilt es, den Vektor in mehrere 3x1-Vektoren umzuwandeln. Das Programm schafft es leider nicht, Ausdrücke mit nicht durch drei teilbarer Buchstabenanzahl zu codieren. In dieser while-Schleife werden die Elemente der Indizes i, i+1, und i+2 des transponierten Vektors v zu einem Vektor v1 gemacht, und dann mit der Schlüsselmatrix M multipliziert. Es folgt die Ausgabe des Produktes. Durch die Erhöhung von i um drei zum Ende der Schleife bewirkt, dass die nächsten drei Zahlen den selben Vorgang durchlaufen. Die while-Schleife stoppt, wenn i gleich oder größer der Länge von v ist. Somit liefert das Programm in der Ausgabe schließlich die verschlüsselten 3x1-Vektoren.<br />
+Das Hill-Verfahren wird als Definition Verschluesselung2 in dem Programm umgesetzt. Die Definition ist charakterisiert durch die Eingabe, das verwendete Alphabet, sowie die Schlüsselmatrix M. Es wird auf  die Bibliothek Numpy zurückgegriffen. Anfangs wird das Alphabet in einer Liste notiert, um anschließend mithilfe einer for-Schleife, die Stellen im Alphabet des eingetragenen Ausdruckes als weitere Liste ausgeben zu können. Hiernach wird diese Liste L in einen Vektor v umgewandelt. Dieser muss allerdings, um anschließend mit der Matrix multipliziert zu werden, transponiert werden. <br> Nun gilt es, den Vektor in mehrere 3x1-Vektoren umzuwandeln. Das Programm schafft es leider nicht, Ausdrücke mit nicht durch drei teilbarer Buchstabenanzahl zu codieren. In dieser while-Schleife werden die Elemente der Indizes i, i+1, und i+2 des transponierten Vektors v zu einem Vektor v1 gemacht, und dann mit der Schlüsselmatrix M multipliziert. Es folgt die Ausgabe des Produktes. Durch die Erhöhung von i um drei zum Ende der Schleife bewirkt, dass die nächsten drei Zahlen den selben Vorgang durchlaufen. Die while-Schleife stoppt, wenn i gleich oder größer der Länge von v ist. Somit liefert das Programm in der Ausgabe schließlich die verschlüsselten 3x1-Vektoren.<br />
 
 ![Screenshot 13](https://github.com/jasmin-jarecki/Projekt-Kryptografische-Verfahren/blob/master/Berichtbilder/Screenshot%20(13).png)
 
@@ -153,7 +153,7 @@ Um den Geheimtext c als Dritter zu bestimmen, muss man entweder d aus e oder Phi
 Dies ist alles recht ähnlich in der rechnerischen, praktischen Durchführbarkeit der Bestimmung von p
 und q aus n. Ebenfalls die e-te Wurzel aus c zu berechnen scheitert am Rechenaufwand.<br />
 
-In Python ist die grundsätzliche Ver- und Entschlüsselung nach RSA-Verfahren nicht schwer umzusetzten, da die Formeln für den Geheimtext c und den Klartext m direkt eingegeben werden können, die Voraussetzung dafür ist, dass die beiden Schlüssel bekannt sein müssen.<br>
+In Python ist die grundsätzliche Ver- und Entschlüsselung nach RSA-Verfahren nicht schwer umzusetzen, da die Formeln für den Geheimtext c und den Klartext m direkt eingegeben werden können, die Voraussetzung dafür ist, dass die beiden Schlüssel bekannt sein müssen.<br>
 
 Die eigentliche Schwierigkeit liegt darin, die Schlüssel zu erzeugen.<br>
 Für den Schlüssel e werden alle Zahlen i von z bis phi(n) auf den größten gemeinsamen Teiler von i und phi(n) überprüft, wenn dieser 1 ist, eignet sich i als öffentlicher Schlüssel e. Das Argument z wird eingeführt, damit das Programm nicht bei den kleinen Zahlen abbrechen soll. So kann etwas Einfluss auf die Höhe des Betrags von e genommen werden. <br />
@@ -169,7 +169,7 @@ Rot-13-Verfahren.<br>
 Mit der Python built-in-Methode für Listen ist die Verschlüsselung sehr einfach umzusetzten. <br>
 Die Entschlüsselung bei diesem Verfahren war uns nicht möglich, die Komplexität, die durch den fehlenden Schlüssel entsteht, 
 erlaubt nur eine sehr aufwändige Entschlüsselung.<br>
-Auch die Umsetztung des Rot-Verfahren war relativ einfach. In der Verschlüsselung werden in einem Dictionairy dem ursprüng-
+Auch die Umsetzung des Rot-Verfahren war relativ einfach. In der Verschlüsselung werden in einem Dictionairy dem ursprüng-
 lichen Buchstaben ein um den Wert des Schlüssels verschobenen neuen Buchstaben ersetzt. Die Entschlüsselung funktioniert
 analog. Schwierigkeiten bereiteten hier die Verwendung von Sonderzeichen, wie z. B. Umlauten. So war es nötig, die 
 Verwendung des Unicodes zu verstehen, um hier die Ver- und Entschlüsselung korrekt vorzunehmen. Auch hielt auf, dass sobald
