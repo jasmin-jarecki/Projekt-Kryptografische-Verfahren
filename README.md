@@ -2,17 +2,17 @@
 
 #### **Inhaltsverzeichnis**
 <ol>
-  <li>[1. Einleitung](#Einl)</li>
-  <li>[2. Aufgaben](#Auf)</li>
+  <li>[Einleitung]</li>(#Einl)
+  <li>[Aufgaben]</li>(#Auf)
   <ol>
-    <li>[2.1 Alphabetisch Einordnen](#Alph)</li>
-    <li>[2.2 Caesar-Verschlüsselung](#Cae)</li>
-    <li>[2.3 ROT13-Verfahren](#ROT)</li>
-    <li>[2.4 Hill-Verfahren](#Hill)</li>
-    <li>[2.5 RSA-Verschlüsselung](#RSA)</li>
+    <li>[ Alphabetisch Einordnen]</li>(#Alph)
+    <li>[ Caesar-Verschlüsselung]</li>(#Cae)
+    <li>[ ROT13-Verfahren]</li>(#ROT)
+    <li>[ Hill-Verfahren]</li>(#Hill)
+    <li>[ RSA-Verschlüsselung]</li>(#RSA)
   </ol>
-  <li>[3. Projektverlauf](#PrV)</li>
-  <li>[4. Zusammenfasssung](#Zusam)</li>
+  <li>[Projektverlauf]</li>(#PrV)
+  <li>[Zusammenfasssung]</li>(#Zusam)
  </ol>
 
 ### Einleitung<a name="Einl"></a>
@@ -23,7 +23,7 @@ Des Weiteren soll gezeigt werden, wie diese in Python-Programme umgesetzt werden
 
 ### 2. Aufgaben<a name="Auf"></a>
 
-#### 2.1 Alphabetisch Einordnen<a name="Aph"></a>
+#### 2.i Alphabetisch Einordnen<a name="Aph"></a>
 
 s. Python-Skript "Alphabetisch Einordnen"
 
@@ -57,7 +57,7 @@ Buchstaben ausprobieren und prüfen, welche Sinn ergeben. In manchen Fällen ist
 tionen sinnvoll sind.
 
 
-#### 2.2 Caesar-Verschlüsselung<a name="Cae"></a>
+#### 2.ii Caesar-Verschlüsselung<a name="Cae"></a>
 
 Die Caesar-Chiffre funktioniert, indem jedem Buchstaben a mithilfe eines geheimen Schlüssels c ein
 anderer Buchstabe b zugeordnet wird.<br />
@@ -75,7 +75,7 @@ vorkommenden Buchstaben bei typischem Sprachgebrauch je nach Sprache. So sind im
 Buchstaben wie e und n durch ihre deutliche Präsenz zu idetifizieren.
 
 
-#### ROT13-Verfahren<a name="ROT"></a>
+#### 2.iii ROT13-Verfahren<a name="ROT"></a>
 
 Die ROT13-Chiffre ist eine Caesar-Verschlüsselung mit dem Schlüssel c = 13. Dieser kann aber frei gewählt werden. Betrachtet man allerdings nur das gewöhnliche Alphabet mit den 26 Buchstaben, ist eine Nachricht relativ leicht zu dechiffrieren, da man die Zeichen nur entsprechend verschoben werden müssen. Da das Alphabet nur 26 Buchstaben müsste man höchstens 25 Verschiebungen ausprobieren.
 <br />
@@ -87,9 +87,7 @@ Dadurch, dass das Alphabet eigens definiert werden muss, ist es nicht mehr so le
 Somit funktioniert die Entschlüsselung entsprechend, der ursprüngliche Buchstabe a ergibt sich durch: a = b-c mod n.
 
 
-eigene Probleme: 'ß' einbinden
-
-#### Hill-Verfahren<a name="Hill"></a>
+#### 2.iv Hill-Verfahren<a name="Hill"></a>
 
 Das Hill-Verfahren wurde 1929 von dem New Yorker Professor Lester Hill entdeckt, es basiert auf der Substitution der Buchstaben des Alphabets.<br />
 Die Verschlüsselung funktioniert wie folgt:<br>
@@ -104,7 +102,7 @@ Das Hill-Verfahren wird als Definition Verschlüsselung2 in dem Programm umgeset
 Die Entschlüsselung des Hill-Verfahrens, Aufgabe 2, wird analog umgesetzt. Zuvor muss jedoch noch die inverse Matrix berechnet werden. Die Definition ist in Abhängigkeit der verschlüsselten Vektoren, der Schlüsselmatrix M und des Alphabets. Das Alphabet kann wie bereits beim Verschlüsselungsvorgang beschrieben als Liste fungieren, sodass die Indizes dann ausreichen, um die entschlüsselten Zahlen wieder zu Buchstaben werden zu lassen. Die Schwierigkeit in diesem Verfahren der Entschlüsselung, die inverse Matrix von M zu bilden, lässt sich mittels 1/det /* adj(M)(die adjunkte Matrix von M) berechnen. <br>
 
 
-#### 3. RSA-Verschlüsselung<a name="RSA"></a>
+#### 2.v RSA-Verschlüsselung<a name="RSA"></a>
 
 Das von Rivest, Shamir und Adelson 1980 patentierte Verschlüsselungsverfahren ist heute das
 weitgenutzte Verfahren der Verschlüsselung, es findet Anwendung in der Internet- und
@@ -142,4 +140,58 @@ und q aus n. Ebenfalls die e-te Wurzel aus c zu berechnen scheitert am Rechenauf
 In Python ist die grundsätzliche Ver- und Entschlüsselung nach RSA-Verfahren nicht schwer umzusetzten, da die Formeln für den Geheimtext c und den Klartext m direkt eingegeben werden können, die Voraussetzung dafür ist, dass die beiden Schlüssel bekannt sein müssen.<br>
 Die eigentliche Schwierigkeit liegt darin, die Schlüssel zu erzeugen.<br>
 Für den Schlüssel e werden alle Zahlen i von z bis phi(n) auf den größten gemeinsamen Teiler von i und phi(n) überprüft, wenn dieser 1 ist, eignet sich i als öffentlicher Schlüssel e. Das Argument z wird eingeführt, damit das Programm nicht bei den kleinen Zahlen abbrechen soll. So kann etwas Einfluss auf die Höhe des Betrags von e genommen werden. <br />
+
+### 3. Projektverlauf
+
+Im Rahmen des von uns ausgewählten Projektes beschäftigten wir uns mit verschiedenen kryptographischen 
+Verfahren. Wir haben uns für dieses Projekt entschieden, da uns dieses Thema aufgrund seiner Präsens im täglichen Leben,
+als auch aufgrund seines mathematischen Orientierung interessierte.<br>
+Anfangs galt es, die Verfahren zu verstehen, um diese dann in einem Code in Python umzusetzen. Die erste von uns 
+bearbeiteten Verfahren waren die in Aufgabe 1 geschilderten Verfahren, der alphabetischen Sortierung und das 
+Rot-13-Verfahren.<br>
+Mit der Python built-in-Methode für Listen ist die Verschlüsselung sehr einfach umzusetzten. <br>
+Die Entschlüsselung bei diesem Verfahren war uns nicht möglich, die Komplexität, die durch den fehlenden Schlüssel entsteht, 
+erlaubt nur eine sehr aufwändige Entschlüsselung.<br>
+Auch die Umsetztung des Rot-Verfahren war relativ einfach. In der Verschlüsselung werden in einem Dictionairy dem ursprüng-
+lichen Buchstaben ein um den Wert des Schlüssels verschobenen neuen Buchstaben ersetzt. Die Entschlüsselung funktioniert
+analog. Schwierigkeiten bereiteten hier die Verwendung von Sonderzeichen, wie z. B. Umlauten. So war es nötig, die 
+Verwendung des Unicodes zu verstehen, um hier die Ver- und Entschlüsselung korrekt vorzunehmen. Auch hielt auf, dass sobald
+das Zeichen "ß" auf die Verschlüsselung angewendet worden war, ein "key-error" zurückgegeben wurde. Nach einiger Suche trat 
+hervor, dass sich das "ß" im gewählten Alphabet, das auf das Verschlüsselungsdictionairy angewendet wurde, sich von dem in
+der Eingabe optisch unterschied, was den key-error erklärte, da dem eingegebenen "ß" kein anderes Zeichen zugeordnet werden
+konnte.<br />
+Nach diesen Verfahren wandten wir uns dem Hill-Verfahren zu. Erst nach einer Wiederaneignung der Matrizenrechnung und 
+-programmierung war es uns möglich, die Verschlüsselung zu verstehen, und anschließend den 
+Code zu verfassen. Eine besondere Schwierigkeit bildeten hier die Dreierbuchstabenkonstellationen. Das Prinzip der Hill-Ver-
+schlüsselung beruht darauf, dass den Buchstaben zunächst die entsprechende Stelle im Alphabet zugeordnet wird und diese 
+nacheinander als 3x1-Vektoren mit der Schlüsselmatrix multipliziert werden. Unsere erste Lösung (Verschluesselung1) gab 
+zu Anfang nur die ersten drei Buchstaben verschlüsselt wider. Da die Ausgabe als Vektoren erfolgte, mussten diese 
+anschließend noch manuell zurück in Buchstaben umgewandelt werden.<br> 
+Durch Einfügen einer Schleife, die solange lief, bis die Zählvariable größer der Anzahl der Buchstaben in der Eingabe ist,
+kann die Verschlüsselung für alle Buchstaben vorgenommen werden, solange die Anzahl der Buchstaben der Eingabe durch drei
+teilbar ist. Auch hier müssen die ausgegebenen Vektoren manuell zurück in Buchstaben umgewandelt werden. Zudem werden alle
+Zeichen, die nicht im definierten Alphabet vorkommen, in der Verschlüsselung nicht berücksichtigt. Somit muss bei der 
+Eingabe darauf geachtet werden, dass beispielsweise Umlaute oder andere Sonderbuchstaben mit im Alphabet vorkommenden 
+Zeichen ersetzt werden.<br>
+Die Entschlüsselung, die in Aufgabe 2 betrachtet wird, bereitete allerdings mehr Probleme. Wieder müssen 3x1-Vektoren mit 
+einer Matrix, nämlich der inversen Matrix zur zuvor genutzten Schlüsselmatrix, multipliziert werden. Allerdings ist es
+bisher nicht gelungen die verschlüsselten Texte wieder zu entschlüsseln. Die Überprüfung der inversen Matrix, indem sie mit
+der zugehörigen Matrix multipliziert wird, was die Einheitsmatrix ergeben müsse, zeigt an drei Stellen leichte Abweichungen
+von der Einheitsmatrix. So kann man vermuten, dass durch die Multiplikation mit der inversen Matrix abweichenden Vektoren
+ausgegeben werden. <br />
+Zuletzt gelangten wir zum RSA-Verfahren. Hierbei kamen die Schwierigkeiten bei der Generierung der Schlüssel für die Ver- 
+und Entschlüsselung zutage. Die erste Herausforderung ergab sich mit der Implementierung des Euklidischen Algorithmus', mit 
+dem der größte gemeinsame Teiler zweier Zahlen berechnet werden soll. Mit dessen Hilfe können die Bedingungen für den 
+öffentlichen Schlüssel e erfüllt werden. Da die Mathematik, die hinter dem privaten Schlüssel d steht, uns noch nicht ganz
+klar wurde, konnen wir dessen Erzeugung nicht implementieren.
+<br />
+Durch die Überarbeitung, mit zusätzlichen, weiteren Kommentaren, sowie das Resumieren und Auswerten der jeweiligen 
+Verfahren gelangen wir zu dem Schluss, das richtige Projekt gewählt zu haben und sind zufrieden mit der entstandenen Arbeit.
+
+
+### 4. Zusammenfassung
+
+In diesem Projekt über kryptographische Verfahren ist es uns gelungen, uns erfolgreich mit verschiedenen Verfahren auseinanderzusetzen und sie so nachvollziehen und anwenden zu lernen. Unsere Erwartung für dieses vorgeschlagene Projekt, dass das interessante Thema dadurch uns näher gebracht wird, ist somit gelungen und hat uns in unserem Programmierverständnis durchaus vorangebracht. So galt es, die mathematischen Verschlüsselungskonzepte in einen ansprechenden Code zu formen. Besonders dieser Punkt hat den Reiz dieses Projektes ausgemacht.
+
+### 5. Literatur
 
